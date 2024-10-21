@@ -9,8 +9,7 @@ pipeline {
         stage('Test') {
                     steps {
                         echo "MAVEN_HOME is set to: ${MAVEN_HOME}"
-                        sh "${MAVEN_HOME}/bin/mvn -version" // Check if Maven is accessible
-                        sh '"${MAVEN_HOME}/bin/mvn" clean test'
+                        sh "${MAVEN_HOME}/bin/mvn clean test"
                     }
                 }
 
