@@ -18,7 +18,7 @@ pipeline {
     post {
         always {
             // Publish the Allure report
-            allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+            allure commandline: 'Allure', results: [[path: 'target/allure-results']]
         }
     }
 
