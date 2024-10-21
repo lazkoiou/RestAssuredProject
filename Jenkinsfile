@@ -9,7 +9,7 @@ pipeline {
         stage('Test') {
                     steps {
                         echo "MAVEN_HOME is set to: ${MAVEN_HOME}"
-                        sh "${MAVEN_HOME}\\bin\\mvn clean test"
+                        bat "${MAVEN_HOME}\\bin\\mvn clean test"
                     }
                 }
 
