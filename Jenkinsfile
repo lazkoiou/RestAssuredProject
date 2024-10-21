@@ -1,16 +1,20 @@
 pipeline {
     agent any
 
+    environment {
+        MAVEN_HOME = tool name: 'maven', type: 'maven' // Replace 'Maven' with your Maven installation name
+    }
+
     stages {
         stage('Build') {
             steps {
-                sh "mvn clean install -DskipTests"
+                sh '"${MAVEN_HOME}/bin/mvn" clean install -DskipTests'
             }
         }
 
         stage('Test') {
                     steps {
-                        sh "mvn clean test"
+                        sh '"${MAVEN_HOME}/bin/mvn" clean test'
                     }
                 }
 
