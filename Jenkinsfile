@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "mvn clean test -DsuiteFile=${params.SUITE_FILE ?: "api/booksApiSuite.xml"'"}"
+                sh "mvn clean test -DsuiteFile=${params.SUITE_FILE ?: "api/booksApiSuite.xml"}"
             }
         }
 
