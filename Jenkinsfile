@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'SUITE_FILE', defaultValue: 'booksApiSuite.xml', description: 'Suite file to run')
+        string(name: 'SUITE_FILE', defaultValue: "api/booksApiSuite.xml", description: 'Suite file to run (Leave empty for default)')
     }
 
     stages {
         stage('Test') {
             steps {
-                sh "mvn clean test -DsuiteFile=${params.SUITE_FILE}"
+                sh "mvn test -DsuiteFile=${params.SUITE_FILE ?: 'api/booksApiSuite.xml'}"
             }
         }
 
