@@ -8,13 +8,15 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh '"${MAVEN_HOME}/bin/mvn" clean install -DskipTests'
+                echo "MAVEN_HOME is set to: ${MAVEN_HOME}"
+                sh "${MAVEN_HOME}/bin/mvn -version" // Check if Maven is accessible
+                bat '"${MAVEN_HOME}/bin/mvn" clean install -DskipTests'
             }
         }
 
         stage('Test') {
                     steps {
-                        sh '"${MAVEN_HOME}/bin/mvn" clean test'
+                        bat '"${MAVEN_HOME}/bin/mvn" clean test'
                     }
                 }
 
@@ -24,7 +26,7 @@ pipeline {
                     // Check if allure-results directory exists
                     if (fileExists('allure-results')) {
                         // Generate the Allure report
-                        sh "allure generate allure-results --clean -o allure-report"
+                        bat "allure generate allure-results --clean -o allure-report"
                         echo 'Allure report generated successfully.'
                     } else {
                         echo 'No allure-results found. Skipping report generation.'
